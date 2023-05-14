@@ -107,6 +107,12 @@ export async function getServerSideProps() {
 
     const emails = await prisma.email.findMany();
 
+    if (!emails) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: { emails: JSON.parse(JSON.stringify(emails)) },
     };

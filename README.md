@@ -2,6 +2,10 @@
 
 Simple dashboard developed using NextJS (Framework), Prisma (ORM), MUI (UI Framework)
 
+### Woking App Links
+- [Dashboard](https://simple-mui-dashboard-nextjs.vercel.app/)
+- [Sign in](https://simple-mui-dashboard-nextjs.vercel.app/signin)
+- [Sign up](https://simple-mui-dashboard-nextjs.vercel.app/signup)
 ### Language
 
 -   NodeJS
