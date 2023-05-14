@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  name String
+  createdAt DateTime @default(now())
+  @@index([id, email])
+}
+
+model Email {
+  id Int @id @default(autoincrement())
+  from_name String
+  from_email String
+  subject String
+  content String 
+  time_received DateTime
+  favorited Boolean @default(false)
+  @@index([id, from_email, time_received(sort: Desc)])
+}
