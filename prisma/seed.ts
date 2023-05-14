@@ -1,9 +1,9 @@
 import { faker } from '@faker-js/faker';
 import { PrismaClient } from '@prisma/client';
 
-if (process.env.NODE_ENV === 'production') {
-    process.exit(1);
-}
+// if (process.env.NODE_ENV === 'production') {
+//     process.exit(1);
+// }
 
 const prisma = new PrismaClient();
 
