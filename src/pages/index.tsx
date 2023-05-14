@@ -1,5 +1,5 @@
 export default function HomePage() {
-    return <h1> hi from home</h1>;
+    return <h1>Home Page</h1>;
 }
 
 // import { useCallback, useEffect } from 'react';

@@ -11,7 +11,6 @@ import { Box, IconButton, Stack } from '@mui/material';
 import { Delete, Reply, StarBorder } from '@mui/icons-material';
 import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
-import { AppProps } from 'next/app';
 import { getFirstChar } from '../../../helpers/strings';
 
 const prisma = new PrismaClient();
