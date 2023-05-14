@@ -15,7 +15,7 @@
         "start": "next start",
         "dev": "next dev",
         "build": "next build",
-        "postbuild": "npx prisma migrate dev --name dev",
+        "postbuild": "prisma migrate dev --name dev",
         "test": "",
         "format": "prettier --ignore-path .gitignore --write .",
         "lint": "next lint",
