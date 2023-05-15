@@ -10,10 +10,9 @@ import DashboardLayout from '../../../layouts/dashboard-layout';
 import { Box, IconButton, Stack } from '@mui/material';
 import { Delete, Reply, StarBorder } from '@mui/icons-material';
 import Link from 'next/link';
-import { PrismaClient } from '@prisma/client';
 import { getFirstChar } from '../../../helpers/strings';
-
-const prisma = new PrismaClient();
+import prisma from '../../../../prisma/prisma-client';
+import { NextPageContext } from 'next';
 
 export default function Email({ emails }) {
     return (
@@ -102,18 +101,28 @@ export default function Email({ emails }) {
         </DashboardLayout>
     );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(context: NextPageContext) {
     // await setTimeout(function () {}, 5000);
 
-    const emails = await prisma.email.findMany();
+    const id = setTimeout(() => {
+        context.res.statusCode = 500;
+        throw new Error('Internal Server Error');
+    }, 7000);
 
-    if (!emails) {
+    let emails;
+
+    try {
+        emails = await prisma.email.findMany();
+        clearTimeout(id);
+        if (!emails) {
+            return {
+                notFound: true,
+            };
+        }
         return {
-            notFound: true,
+            props: { emails },
         };
+    } catch (err) {
+        throw new Error('Internal Server Error');
     }
-
-    return {
-        props: { emails: JSON.parse(JSON.stringify(emails)) },
-    };
 }

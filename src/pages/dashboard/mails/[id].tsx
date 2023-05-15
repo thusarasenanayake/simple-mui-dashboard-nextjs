@@ -5,8 +5,8 @@ import {
     CardContent,
     Typography,
 } from '@mui/material';
-import { PrismaClient } from '@prisma/client';
 import { GetServerSidePropsContext } from 'next';
+import prisma from '../../../../prisma/prisma-client';
 // import { setTimeout } from 'timers/promises';
 import DashboardLayout from '../../../layouts/dashboard-layout';
 
@@ -47,21 +47,29 @@ export default function Page({ email }) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const prisma = new PrismaClient();
+    const id = setTimeout(() => {
+        context.res.statusCode = 500;
+        throw new Error('Internal Server Error');
+    }, 7000);
 
-    const email = await prisma.email.findFirst({
-        where: {
-            id: Number(context.params.id),
-        },
-    });
+    let email;
 
-    if (!email) {
+    try {
+        email = await prisma.email.findFirst({
+            where: {
+                id: Number(context.params.id),
+            },
+        });
+        clearTimeout(id);
+        if (!email) {
+            return {
+                notFound: true,
+            };
+        }
         return {
-            notFound: true,
+            props: { email },
         };
+    } catch (err) {
+        throw new Error('Internal Server Error');
     }
-
-    return {
-        props: { email: JSON.parse(JSON.stringify(email)) },
-    };
 }

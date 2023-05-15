@@ -24,7 +24,7 @@ model Email {
   from_email String
   subject String
   content String 
-  time_received DateTime
+  time_received String
   favorited Boolean @default(false)
   @@index([id, from_email, time_received(sort: Desc)])
 }

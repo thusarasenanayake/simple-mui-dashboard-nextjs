@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-const prisma = new PrismaClient();
+import prisma from '../../../prisma/prisma-client';
 
 export default async function index(_: NextApiRequest, res: NextApiResponse) {
     // await new Promise(() => setTimeout(console.log, 5000));

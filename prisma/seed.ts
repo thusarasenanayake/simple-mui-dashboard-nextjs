@@ -24,7 +24,7 @@ async function main() {
                 from_email: faker.internet.email(),
                 from_name: faker.name.fullName(),
                 subject: faker.random.words(10),
-                time_received: faker.date.recent(),
+                time_received: faker.date.recent().getTime().toString(),
             },
         });
     }
