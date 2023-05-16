@@ -18,6 +18,7 @@ const urls = {
     '/': '/dashboard',
     mails: '/dashboard/mails',
     users: '/dashboard/users',
+    reports: '/dashboard/reports',
 };
 
 export function MainListItems() {
@@ -60,12 +61,18 @@ export function MainListItems() {
                 </ListItemButton>
             </Link>
 
-            <ListItemButton>
-                <ListItemIcon>
-                    <BarChartIcon />
-                </ListItemIcon>
-                <ListItemText primary="Reports" />
-            </ListItemButton>
+            <Link
+                href={urls.reports}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+                <ListItemButton selected={pathname.startsWith(urls.reports)}>
+                    <ListItemIcon>
+                        <BarChartIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Reports" />
+                </ListItemButton>
+            </Link>
+
             <ListItemButton>
                 <ListItemIcon>
                     <LayersIcon />

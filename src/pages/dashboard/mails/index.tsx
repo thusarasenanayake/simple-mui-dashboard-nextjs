@@ -14,7 +14,7 @@ import { getFirstChar } from '../../../helpers/strings';
 import prisma from '../../../../prisma/prisma-client';
 import { NextPageContext } from 'next';
 
-export default function Email({ emails }) {
+export default function Emails({ emails }) {
     return (
         <DashboardLayout>
             <Box

@@ -8,7 +8,7 @@ Simple dashboard developed using NextJS (Framework), Prisma (ORM), MUI (UI Frame
 - [Sign up](https://simple-mui-dashboard-nextjs.vercel.app/signup)
 ### Language
 
--   NodeJS
+-   TypeScript
 
 ## Setup
 
