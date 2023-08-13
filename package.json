@@ -29,6 +29,7 @@
         "@mui/icons-material": "5.11.0",
         "@mui/material": "5.11.7",
         "@prisma/client": "4.10.1",
+        "@vercel/postgres": "0.3.2",
         "next": "13.1.6",
         "react": "18.2.0",
         "react-dom": "18.2.0",

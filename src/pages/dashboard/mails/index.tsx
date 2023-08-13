@@ -11,8 +11,10 @@ import { Box, IconButton, Stack } from '@mui/material';
 import { Delete, Reply, StarBorder } from '@mui/icons-material';
 import Link from 'next/link';
 import { getFirstChar } from '../../../helpers/strings';
-import prisma from '../../../../prisma/prisma-client';
+// import prisma from '../../../../prisma/prisma-client';
 import { NextPageContext } from 'next';
+// import { PrismaClient } from '@prisma/client';
+import { sql } from '@vercel/postgres';
 
 export default function Emails({ emails }) {
     return (
@@ -101,22 +103,27 @@ export default function Emails({ emails }) {
         </DashboardLayout>
     );
 }
+
+// eslint-disable-next-line no-unused-vars
 export async function getServerSideProps(context: NextPageContext) {
     // await setTimeout(function () {}, 5000);
 
-    const id = setTimeout(() => {
-        context.res.statusCode = 500;
-        throw new Error('Internal Server Error');
-    }, 7000);
+    // const id = setTimeout(() => {
+    //     context.res.statusCode = 500;
+    //     throw new Error('Internal Server Error');
+    // }, 7000);
 
-    let emails;
+    // let emails;
 
     try {
-        emails = await prisma.email.findMany();
-        clearTimeout(id);
+        // const emails = await new PrismaClient().email.findMany();
+        const { rows: emails } = await sql`SELECT * FROM "Email";`;
+
+        // clearTimeout(id);
         if (!emails) {
             return {
                 notFound: true,
+                // props: { emails: [] },
             };
         }
         return {
